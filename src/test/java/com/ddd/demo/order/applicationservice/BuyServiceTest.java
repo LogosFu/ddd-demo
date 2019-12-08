@@ -1,0 +1,36 @@
+package com.ddd.demo.order.applicationservice;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.ddd.demo.order.controller.dto.OrderCreateDto;
+import com.ddd.demo.order.controller.dto.OrderDto;
+import com.ddd.demo.order.controller.dto.OrderItemDto;
+import com.ddd.demo.order.domain.Order;
+import com.ddd.demo.order.domain.OrderItem;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Objects;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+class BuyServiceTest {
+
+  @Autowired
+  private BuyService buyService;
+
+  @Test
+  void should_save_order_when_given_a_order_info() {
+
+    OrderItemDto itemDto = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
+    OrderItemDto itemDto1 = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
+    OrderItemDto itemDto2 = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
+    OrderItemDto itemDto3 = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
+
+    OrderDto order = buyService.createOrderCommand(
+        OrderCreateDto.builder().items(Arrays.asList(itemDto, itemDto1, itemDto2, itemDto3))
+            .build());
+
+    assertThat(Objects.nonNull(order)).isTrue();
+  }
+}
