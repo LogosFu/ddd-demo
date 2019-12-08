@@ -1,5 +1,8 @@
 package com.ddd.demo.order.domain;
 
+import com.ddd.demo.order.controller.dto.OrderItemDto;
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.List;
 import lombok.Data;
