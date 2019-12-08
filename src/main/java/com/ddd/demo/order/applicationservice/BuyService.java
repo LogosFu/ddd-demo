@@ -26,10 +26,15 @@ public class BuyService implements ApplicationEventPublisherAware {
   }
 
   public Order createOrderCommand(Order order) {
+
+    Order orderToCreate = new Order();
+    order = orderToCreate.create(order);
     orderRepository.save(order);
-
     eventPublisher.publishEvent(OrderCreatedEvent.builder().order(order).build());
-
     return order;
+  }
+
+  public Order createOrderCommand(List<OrderItem> toOrderItems, Integer userId) {
+    return null;
   }
 }

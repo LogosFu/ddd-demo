@@ -22,4 +22,7 @@ public class Order {
   public BigDecimal countAmount() {
     return BigDecimal.ZERO;
   }
+
+  public Order create(Order order){
+  }
 }

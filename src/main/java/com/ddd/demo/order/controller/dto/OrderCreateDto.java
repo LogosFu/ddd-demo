@@ -27,7 +27,7 @@ public class OrderCreateDto {
     return order;
   }
 
-  private List<OrderItem> toOrderItems() {
+  public List<OrderItem> toOrderItems() {
     return items.stream()
         .map(item -> OrderItem.builder().count(item.getCount()).goodsId(item.getGoodsId())
             .price(item.getPrice()).build()).collect(Collectors.toList());
