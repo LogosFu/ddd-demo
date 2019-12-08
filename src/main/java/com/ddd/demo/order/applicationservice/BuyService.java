@@ -16,7 +16,7 @@ public class BuyService {
   public OrderDto createOrderCommand(OrderCreateDto orderCreateDto) {
     Order order = new Order();
     order.create(orderCreateDto.getItems());
-
+    orderRepository.save(order);
     return new OrderDto();
   }
 }
