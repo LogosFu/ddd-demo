@@ -1,4 +1,4 @@
-package com.ddd.demo.domain;
+package com.ddd.demo.order.domain;
 
 import java.math.BigDecimal;
 
