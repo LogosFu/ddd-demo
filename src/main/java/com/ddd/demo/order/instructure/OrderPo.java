@@ -1,5 +1,6 @@
 package com.ddd.demo.order.instructure;
 
+import com.ddd.demo.order.domain.Order;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,13 +18,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "order")
 public class OrderPo {
 
   @Id
   private Integer id;
-
-  @OneToMany
-  @JoinTable(name = "order_item", joinColumns = {@JoinColumn(name = "order_id")})
-  private List<OrderItemPo> items;
 }

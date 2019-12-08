@@ -2,7 +2,9 @@ package com.ddd.demo.order.domain;
 
 import java.math.BigDecimal;
 import java.util.List;
+import lombok.Data;
 
+@Data
 public class Order {
 
   private Integer id;
@@ -10,8 +12,11 @@ public class Order {
   private BigDecimal freight;
   private List<OrderItem> orderItems;
 
-  public Order create(List<OrderItem> items) {
+  public void create(List<OrderItem> items) {
+    orderItems.addAll(items);
+  }
 
-    return this;
+  public BigDecimal countAmount() {
+    return BigDecimal.ZERO;
   }
 }
