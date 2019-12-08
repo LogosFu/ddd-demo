@@ -16,23 +16,20 @@ import java.util.List;
 @AllArgsConstructor
 public class BuyService implements ApplicationEventPublisherAware {
 
-    private ApplicationEventPublisher eventPublisher;
+  private ApplicationEventPublisher eventPublisher;
 
-    private final OrderRepository orderRepository;
+  private final OrderRepository orderRepository;
 
-    @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
-        this.eventPublisher = applicationEventPublisher;
-    }
+  @Override
+  public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+    this.eventPublisher = applicationEventPublisher;
+  }
 
-    public Order createOrderCommand(List<OrderItem> orderItems) {
+  public Order createOrderCommand(Order order) {
+    orderRepository.save(order);
 
-        Order order = new Order();
-        order.create(orderItems);
-        orderRepository.save(order);
+    eventPublisher.publishEvent(OrderCreatedEvent.builder().order(order).build());
 
-        eventPublisher.publishEvent(OrderCreatedEvent.builder().order(order).build());
-
-        return order;
-    }
+    return order;
+  }
 }

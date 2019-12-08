@@ -3,6 +3,8 @@ package com.ddd.demo.order.instructure;
 import com.ddd.demo.order.domain.Order;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,5 +23,6 @@ import lombok.NoArgsConstructor;
 public class OrderPo {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 }

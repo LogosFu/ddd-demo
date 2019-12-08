@@ -20,7 +20,7 @@ public class OrderController {
   @PostMapping("/add")
   public OrderDto createOrderCommand(@RequestBody OrderCreateDto orderCreateDto) {
 
-    Order order = buyService.createOrderCommand(orderCreateDto.toOrderItems());
+    Order order = buyService.createOrderCommand(orderCreateDto.createDomain());
 
     return new OrderDto(order);
   }
