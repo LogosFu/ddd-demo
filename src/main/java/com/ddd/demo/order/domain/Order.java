@@ -1,8 +1,11 @@
 package com.ddd.demo.order.domain;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.List;
 
+@Data
 public class Order {
 
   private Integer id;

@@ -12,4 +12,12 @@ public class Stock implements AggregationRoot {
     private Integer goodsId;
     private Integer count;
 
+    public boolean decrease(Integer count) {
+        int swap = this.count - count;
+        if (swap < 0) {
+            return false;
+        }
+        this.count = swap;
+        return true;
+    }
 }
