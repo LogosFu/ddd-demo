@@ -22,15 +22,11 @@ class BuyServiceTest {
   @Test
   void should_save_order_when_given_a_order_info() {
 
-    OrderItemDto itemDto = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
-    OrderItemDto itemDto1 = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
-    OrderItemDto itemDto2 = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
-    OrderItemDto itemDto3 = OrderItemDto.builder().price(BigDecimal.TEN).count(1).build();
-
-    OrderDto order = buyService.createOrderCommand(
-        OrderCreateDto.builder().items(Arrays.asList(itemDto, itemDto1, itemDto2, itemDto3))
-            .build());
-
+    OrderItem itemDto = OrderItem.builder().price(BigDecimal.TEN).goodsId(1).count(1).build();
+    OrderItem itemDto1 = OrderItem.builder().price(BigDecimal.TEN).goodsId(2).count(1).build();
+    OrderItem itemDto2 = OrderItem.builder().price(BigDecimal.TEN).goodsId(3).count(1).build();
+    OrderItem itemDto3 = OrderItem.builder().price(BigDecimal.TEN).goodsId(4).count(1).build();
+    Order order = buyService.createOrderCommand(Arrays.asList(itemDto,itemDto1,itemDto2,itemDto3));
     assertThat(Objects.nonNull(order)).isTrue();
   }
 }
